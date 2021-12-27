@@ -19,7 +19,7 @@ Laravel 8.*<br>
 TALL Stack (Tailwind - Alpine.js - Laravel - Livewire)
 
 
-## Install
+## Installing
 
 To install run this command:
 
