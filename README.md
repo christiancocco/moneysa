@@ -31,6 +31,10 @@ composer install
 npm run dev
 ```
 
+```bash
+php artisan migrate:fresh --seed
+```
+
 Now you can configure testing environment file to be able to run test script.
 
 1. Create testing DB<br>
@@ -47,6 +51,12 @@ and visit
 http://localhost:8000/
 
 This command run a local web server
+
+To login with administrator account use:<br>
+Login: info@christiancocco.com<br>
+Password: password<br><br>
+
+To create a standar user you have to follow the registration procedure.
 
 ## Testing
 
