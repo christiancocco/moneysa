@@ -19,23 +19,26 @@ class PostItem extends Component {
 
     private function getCreatedTime($createdDate)
     {
-        $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $createdDate);
-        $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', now());
-
-        $diff_in_days = $to->diffInDays($from);
-        $diff_in_hours = $to->diffInHours($from);
-        $diff_in_minutes = $to->diffInMinutes($from);
+        $to = \Carbon\Carbon::parse($createdDate);
+        $now = \Carbon\Carbon::now();
+        $diff_in_days = $to->diffInDays($now);
+        $diff_in_hours = $to->diffInHours($now);
+        $diff_in_minutes = $to->diffInMinutes($now);
+        $diff_in_seconds = $to->diffInSeconds($now);
         $retValue = "";
-        if ($diff_in_minutes > 59)
-            if ($diff_in_hours > 23)
-                $retValue = $diff_in_days . " days ago";
+        if ($diff_in_seconds > 59)
+            if ($diff_in_minutes > 59)
+                if ($diff_in_hours > 23)
+                    $retValue = $diff_in_days . " days ago";
+                else
+                    $retValue = $diff_in_hours . " hours ago";
             else
-                $retValue = $diff_in_hours . " hours ago";
+            {
+                $retValue = $diff_in_minutes . " minutes ago";
+            }
         else
-            $retValue = $diff_in_minutes . " minutes ago";
+            $retValue = $diff_in_seconds . " seconds ago";
+
         return $retValue;
     }
-
-
-
 }
